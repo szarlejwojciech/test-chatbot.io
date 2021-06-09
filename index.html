@@ -48,6 +48,24 @@
 				console.log("sdk running");
 			};
 		</script>
+		<script>
+			window.extAsyncInit = function () {
+				// the Messenger Extensions JS SDK is done loading 
+				MessengerExtensions.getUserID(function success(uids) {
+					var psid = uids.psid;
+					console.log("psid", psid);
+				}, function error(err) {
+
+				});
+			};
+		</script>
+		<script>
+			MessengerExtensions.requestCloseBrowser(function success() {
+				console.log("succes");
+			}, function error(err) {
+
+			});
+		</script>
 		<!-- Wrapper -->
 
 		<!-- Your Wtyczka czatu code -->
