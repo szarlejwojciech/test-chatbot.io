@@ -44,22 +44,7 @@
 				// the Messenger Extensions JS SDK is done loading 
 				console.log("succes");
 				console.log(window.name);
-				MessengerExtensions.askPermission(
-					function (permission_response) {
-						// Person grants or rejects the asked permission.
-						let permissions = permission_response.permissions; // list of all permissions granted
-						let isGranted = permission_response.isGranted;
-						console.log(isGranted);
 
-						if (isGranted) {
-							// User has granted user_profile permission
-						}
-
-					}, function (errorCode, errorMessage) {
-						// Error occurred
-					},
-					"user_profile"
-				);
 			};
 		</script>
 
