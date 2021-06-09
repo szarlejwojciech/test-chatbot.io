@@ -19,11 +19,19 @@
 	<body class="is-preload">
 		<!-- Messenger Wtyczka czatu Code -->
 		<div id="fb-root"></div>
+
+		<!-- Your Wtyczka czatu code -->
+		<div id="fb-customer-chat" class="fb-customerchat">
+		</div>
+
 		<script>
+			var chatbox = document.getElementById('fb-customer-chat');
+			chatbox.setAttribute("page_id", "106327708298802");
+			chatbox.setAttribute("attribution", "biz_inbox");
 			window.fbAsyncInit = function () {
 				FB.init({
 					xfbml: true,
-					version: 'v10.0'
+					version: 'v11.0'
 				});
 			};
 
@@ -35,10 +43,14 @@
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
+		<script>
+			window.extAsyncInit = function () {
+				// the Messenger Extensions JS SDK is done loading 
+				console.log("succes");
+				console.log(window.name);
 
-		<!-- Your Wtyczka czatu code -->
-		<div class="fb-customerchat" attribution="biz_inbox" page_id="106327708298802">
-		</div>
+			};
+		</script>
 		<!-- Wrapper -->
 		<div id="wrapper" class="divided">
 
