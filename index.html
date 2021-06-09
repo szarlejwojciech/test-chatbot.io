@@ -29,11 +29,11 @@
 
 			(function (d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
+				if (d.getElementById(id)) { return; }
 				js = d.createElement(s); js.id = id;
-				js.src = 'https://connect.facebook.net/pl_PL/sdk/xfbml.customerchat.js';
+				js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
 				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
+			}(document, 'script', 'Messenger'));
 		</script>
 
 		<!-- Your Wtyczka czatu code -->
@@ -42,21 +42,27 @@
 		<script>
 			window.extAsyncInit = function () {
 				// the Messenger Extensions JS SDK is done loading 
-				MessengerExtensions.getUserID(function success(uids) {
-					var psid = uids.psid;
-					console.log("psid", psid);
-				}, function error(err) {
+				console.log("succes");
+				console.log(window.name);
+				MessengerExtensions.askPermission(
+					function (permission_response) {
+						// Person grants or rejects the asked permission.
+						let permissions = permission_response.permissions; // list of all permissions granted
+						let isGranted = permission_response.isGranted;
+						console.log(isGranted);
 
-				});
+						if (isGranted) {
+							// User has granted user_profile permission
+						}
+
+					}, function (errorCode, errorMessage) {
+						// Error occurred
+					},
+					"user_profile"
+				);
 			};
 		</script>
-		<script>
-			MessengerExtensions.requestCloseBrowser(function success() {
-				console.log("succes");
-			}, function error(err) {
 
-			});
-		</script>
 		<!-- Wrapper -->
 		<div id="wrapper" class="divided">
 
